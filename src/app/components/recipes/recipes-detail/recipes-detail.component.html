@@ -9,7 +9,8 @@
 </div>
 <div class="row">
     <div class="col-12">
-        <h1>Recipe Name: {{ getSelectedRecipe.name }}</h1>
+        <h1 class="text-center my-3 text-success">Recipe Name: {{ getSelectedRecipe.name }}</h1>
+        <h3>Description: {{ getSelectedRecipe.description }}</h3>
     </div>
 </div>
 <div class="row">
@@ -18,7 +19,7 @@
             <button class="btn btn-outline-primary" type="button" ngbDropdownToggle>Manage Recipe</button>
             <ul ngbDropdownMenu class="text-primary">
               <li>
-                <a ngbDropdownItem href="#">Add to Shopping List</a>
+                <a ngbDropdownItem (click)="onAddToShoppingList()">Add to Shopping List</a>
               </li>
               <li>
                 <a ngbDropdownItem href="#">Edit Recipe</a>
@@ -32,11 +33,10 @@
 </div>
 <div class="row">
     <div class="col-12">
-        <h3>Description: {{ getSelectedRecipe.description }}</h3>
-    </div>
-</div>
-<div class="row">
-    <div class="col-12">
-        <h3>Ingredients</h3>
+        <ul class="list-group">
+            <li class="list-group-item" *ngFor="let ingredient of getSelectedRecipe.ingredients">
+                {{ ingredient.name }} ({{ ingredient.amount }})
+            </li>
+        </ul>
     </div>
 </div>
